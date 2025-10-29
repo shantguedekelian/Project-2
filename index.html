@@ -1,204 +1,278 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Project 2 Report</title>
-    <style>
-      :root {
-        --color-neutral-95: hsl(220 10% 95%);
-        --color-neutral-90: hsl(220 10% 90%);
-        --color-neutral-80: hsl(220 10% 80%);
-        --color-neutral-70: hsl(220 10% 70%);
-        --color-neutral-60: hsl(220 10% 60%);
-        --color-neutral-50: hsl(220 10% 50%);
-        --color-neutral-40: hsl(220 10% 40%);
-        --color-neutral-30: hsl(220 10% 30%);
-        --color-neutral-20: hsl(220 10% 20%);
-        --color-neutral-10: hsl(220 10% 10%);
+
+<head>
+  <title>Project 2 Report</title>
+  <style>
+    :root {
+      --color-neutral-95: hsl(220 10% 95%);
+      --color-neutral-90: hsl(220 10% 90%);
+      --color-neutral-80: hsl(220 10% 80%);
+      --color-neutral-70: hsl(220 10% 70%);
+      --color-neutral-60: hsl(220 10% 60%);
+      --color-neutral-50: hsl(220 10% 50%);
+      --color-neutral-40: hsl(220 10% 40%);
+      --color-neutral-30: hsl(220 10% 30%);
+      --color-neutral-20: hsl(220 10% 20%);
+      --color-neutral-10: hsl(220 10% 10%);
+    }
+
+    html {
+      font: 100%/1.5 system-ui;
+      counter-reset: figure;
+      background: var(--color-neutral-95);
+      max-width: min(75vw, 80em);
+      margin: 0 auto;
+    }
+
+    /* Headings */
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      line-height: 1.1;
+      font-weight: 600;
+      text-wrap: balance;
+    }
+
+    h1,
+    h2 {
+      border-bottom: 1px solid var(--color-neutral-80);
+      padding-bottom: 0.2em;
+    }
+
+    h1 {
+      margin-block: 1em 0.5rem;
+      font-size: clamp(2.5em, 150% + 2vh + 2vw, 10vmin);
+      font-weight: 800;
+
+      small {
+        display: block;
+        width: fit-content;
+        padding: 0.2em 0.5em;
+        margin-inline: auto;
+        color: white;
+        background: var(--color-neutral-40);
+        font-size: 40%;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+    }
+
+    h2 {
+      font-size: 180%;
+      color: var(--color-neutral-30);
+    }
+
+    h3 {
+      font-size: 130%;
+    }
+
+    /* Lists */
+
+    ul,
+    ol {
+      padding-inline-start: 2em;
+    }
+
+    li {
+      &::marker {
+        color: var(--color-neutral-40);
       }
 
-      html {
-        font: 100%/1.5 system-ui;
-        counter-reset: figure;
+      +li {
+        margin-top: 0.2em;
+      }
+    }
+
+    /* Sectioning elements */
+
+    header {
+      padding-block: 1em;
+      text-align: center;
+    }
+
+    main {
+      background: white;
+      color: var(--color-neutral-20);
+      border-radius: 1rem;
+      padding: 0.1rem 2rem;
+    }
+
+    /* Figures */
+
+    figure {
+      margin: 1em 0;
+      padding: 0.5rem;
+      margin-inline: -0.5em;
+      border: 1px solid var(--color-neutral-80);
+      box-shadow: 0 0.1em 0.2em var(--color-neutral-95);
+      text-align: center;
+      background: white;
+
+      >figcaption {
+        font: 500 75% var(--font-sans);
         background: var(--color-neutral-95);
-        max-width: min(75vw, 80em);
-        margin: 0 auto;
-      }
+        padding: 0.5rem;
+        margin: -0.5rem;
+        margin-top: 0.5rem;
+        counter-increment: figure;
+        text-align: left;
 
-      /* Headings */
-
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-        line-height: 1.1;
-        font-weight: 600;
-        text-wrap: balance;
-      }
-
-      h1,
-      h2 {
-        border-bottom: 1px solid var(--color-neutral-80);
-        padding-bottom: 0.2em;
-      }
-
-      h1 {
-        margin-block: 1em 0.5rem;
-        font-size: clamp(2.5em, 150% + 2vh + 2vw, 10vmin);
-        font-weight: 800;
-
-        small {
-          display: block;
-          width: fit-content;
-          padding: 0.2em 0.5em;
-          margin-inline: auto;
-          color: white;
-          background: var(--color-neutral-40);
-          font-size: 40%;
-          text-transform: uppercase;
-          white-space: nowrap;
-        }
-      }
-
-      h2 {
-        font-size: 180%;
-        color: var(--color-neutral-30);
-      }
-
-      h3 {
-        font-size: 130%;
-      }
-
-      /* Lists */
-
-      ul,
-      ol {
-        padding-inline-start: 2em;
-      }
-
-      li {
-        &::marker {
+        &::before {
+          content: 'Figure ' counter(figure) ': ';
+          font-weight: bold;
           color: var(--color-neutral-40);
         }
 
-        + li {
-          margin-top: 0.2em;
-        }
-      }
-
-      /* Sectioning elements */
-
-      header {
-        padding-block: 1em;
-        text-align: center;
-      }
-
-      main {
-        background: white;
-        color: var(--color-neutral-20);
-        border-radius: 1rem;
-        padding: 0.1rem 2rem;
-      }
-
-      /* Figures */
-
-      figure {
-        margin: 1em 0;
-        padding: 0.5rem;
-        margin-inline: -0.5em;
-        border: 1px solid var(--color-neutral-80);
-        box-shadow: 0 0.1em 0.2em var(--color-neutral-95);
-        text-align: center;
-        background: white;
-
-        > figcaption {
-          font: 500 75% var(--font-sans);
-          background: var(--color-neutral-95);
-          padding: 0.5rem;
-          margin: -0.5rem;
-          margin-top: 0.5rem;
-          counter-increment: figure;
-          text-align: left;
-
-          &::before {
-            content: 'Figure ' counter(figure) ': ';
-            font-weight: bold;
-            color: var(--color-neutral-40);
-          }
-
-          a:not(:hover, :focus, :active) {
-            color: inherit;
-            text-decoration: underline;
-            text-decoration-color: color-mix(
-              in lab,
+        a:not(:hover, :focus, :active) {
+          color: inherit;
+          text-decoration: underline;
+          text-decoration-color: color-mix(in lab,
               currentColor,
-              transparent 70%
-            );
-          }
+              transparent 70%);
         }
       }
-    </style>
-  </head>
+    }
 
-  <body>
-    <header>
-      <h1>
-        <small>Project 2</small>
-        Persuasive or Deceptive Visualization?
-      </h1>
+    img {
+    max-width: 100%;
+    height: auto; /* keeps aspect ratio */
+    display: block;
+    margin: 0 auto; /* optional: center the image */
+  }
+  </style>
+</head>
 
-      <p><strong>Shant Guedekelian, Jaden Vo, Marcel</strong> — <em>sguedekelian@ucsd.edu | j9vo@ucsd.edu | marcel@ucsd.edu</em></p>
-    </header>
+<body>
+  <header>
+    <h1>
+      <small>Assignment 4</small>
+      Persuasive or Deceptive Visualization?
+    </h1>
 
-    <main>
-      <h2>Proposition: Carbon Dioxide and Greenhouse Gas emissions have followed the exact same trend over the years.</h2>
+    <p><strong>Shant Guedekelian, Jaden Vo, Marcelo Arcos</strong> — <em>sguedekelian@ucsd.edu | j9vo@ucsd.edu | marcos@ucsd.edu</em></p>
+  </header>
 
-      <section>
-        <h3>FOR the Proposition</h3>
+  <main>
+    <h2>Proposition: Carbon Dioxide and Greenhouse Gas emissions have followed the exact same trend over the years.</h2>
 
-        <figure>
-          <img src="gas_for.png" alt="" />
-          <figcaption>BRIEF CAPTION HERE.</figcaption>
-        </figure>
+    <section>
+      <h3>FOR the Proposition</h3>
 
-        <p>Score: 1.5</p>
-        <p>Design Decisions and Rationale:</p>
+      <figure>
+        <img src="for_plot.png" alt="" />
+        <figcaption><em>Score: 1.5</em> This plot shows a side-by-side graph of greenhouse gas and carbon dioxide emissions over time, highlighting their similar trends.</figcaption>
+      </figure>
 
+      <p>Design Decisions and Rationale:</p>
+
+      <ul>
+        <li>Data transformations: The original data was reported quarterly (e.g., “2015Q1”, “2015Q2”). We removed the
+          quarter labels and kept only the year. We then grouped the data by year and calculated the mean, minimum, and
+          maximum values across the four quarters. </li>
         <ul>
-          <li>Data transformations: The original data was reported quarterly (e.g., “2015Q1”, “2015Q2”). We removed the quarter labels and kept only the year. We then grouped the data by year and calculated the mean, minimum, and maximum values across the four quarters. 
-Using yearly averages reduces short-term fluctuations, making the final plot smoother and easier to interpret. 
-</li>
-          <li>Axis manipulation: The y-axis scales for greenhouse gases and carbon dioxide were adjusted independently, causing the line plots to look similar. Since we argue that the greenhouse gases and carbon dioxide follow the same trend, the magnitudes do not matter as long as we see that the trends are similar in both graphs. The values are indeed similar in trend, but adjusting the axis increments makes it even more convincing as the resulting lines are incredibly similar. </li>
-          <li>Gestalt Principle, figure: We plotted the range of min and max values which appear as the shadow of the graph, adding an additional layer of uncertainty to the graph. The viewer's eyes must now focus on 3 separate trends, the minimum, maximum, and the average line trends. This increases visual complexity, which obscures direct comparison and adds uncertainty to each graph.</li>
-          <li>Gestalt Principle, proximity: Separating the two graphs makes it much harder to compare the trends of the lines at the same time. This separation reduces direct comparability, making differences less noticeable. As a result, the viewer perceives the two trends as more similar and smoother than they might actually be.</li>
+          <li>Using yearly averages reduces short-term fluctuations, making the final plot smoother and easier to
+            interpret.</li>
         </ul>
-      </section>
 
-      <section>
-        <h3>AGAINST the Proposition</h3>
-
-        <figure>
-          <img src="gas_against.png" alt="" />
-          <figcaption>BRIEF CAPTION HERE.</figcaption>
-        </figure>
-        
-        <p>Score: -1.5</p>
-        <p>Design Decisions and Rationale:</p>
-
+        <li>Axis manipulation: The y-axis scales for greenhouse gases and carbon dioxide were adjusted independently,
+          causing the line plots to look similar. Since we argue that the greenhouse gases and carbon dioxide follow the
+          same trend, the magnitudes do not matter as long as we see that the trends are similar in both graphs. </li>
         <ul>
-          <li>RATIONALE_1</li>
-          <li>RATIONALE_2</li>
-          <li>RATIONALE_3</li>
+          <li>The values are indeed similar in trend, but adjusting the axis increments makes it even more convincing as
+            the resulting lines are incredibly similar. </li>
         </ul>
-      </section>
 
-      <section>
-        <h2>Final Reflection</h2>
+        <li>Gestalt Principle, figure: We plotted the range of min and max values which appear as the shadow of the
+          graph, adding an additional layer of uncertainty to the graph. </li>
+        <ul>
+          <li>The shadow forces the viewer to track three trends (min, max, average), increasing visual complexity and
+            making direct comparisons harder.</li>
+        </ul>
 
-        <p>[WRITE FINAL REFLECTION PARAGRAPHS HERE.]</p>
-      </section>
-    </main>
-  <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"c822b88e119346678db149ed7b7721c9","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+        <li>Gestalt Principle, proximity: Separating the two graphs makes it much harder to compare the trends of the
+          lines at the same time.
+        </li>
+        <ul>
+          <li>This separation reduces direct comparability, making differences less noticeable. As a result, the viewer
+            perceives the two trends as more similar and smoother than they might actually be.</li>
+        </ul>
+      </ul>
+    </section>
+
+    <section>
+      <h3>AGAINST the Proposition</h3>
+
+      <figure>
+        <img src="against_plot.png" alt="" />
+        <figcaption><em>Score: -1</em> This plot a stacked line graph, emphasizing the differences between greenhouse gas and carbon dioxide emissions over time.</figcaption>
+      </figure>
+
+      <p>Design Decisions and Rationale:</p>
+
+      <ul>
+        <li>Data transformations, aggregation: We removed the quarter labels and kept only the year. We then grouped the
+          data by year and calculated the mean of the four quarters. </li>
+        <ul>
+          <li>Using yearly averages reduces short-term fluctuations, making the final plot smoother and easier to
+            interpret.</li>
+        </ul>
+
+        <li>Data transformation: The greenhouse gas values were raised to the power of 1.1 and shifted down by 400,
+          while carbon dioxide values were raised to the power of 0.9 and shifted up by 160.</li>
+        <ul>
+          <li>These transformations intentionally stretch and compress each variable’s scale, making the two lines
+            diverge and appear less correlated than they truly are.</li>
+        </ul>
+
+        <li>Axis manipulation: Now the plots share the same x-axis (Year) and y-axis (Emissions), unlike the earlier
+          version where axes were scaled separately.</li>
+        <ul>
+          <li>This shared axis encourages direct comparison, but due to the nonlinear transformations, the viewer
+            perceives a stronger difference between the two trends.</li>
+        </ul>
+
+      <li>Gestalt principle, focal point: There is a noticeable dip in emissions corresponding to the COVID-19 pandemic.
+        We added text annotation to highlight this point.
+      </li>
+      <ul>
+        <li>This annotation creates a visual anchor that immediately draws the viewer’s attention to the dip. By
+          emphasizing this divergence, the viewer perceives a stronger difference between greenhouse gas and carbon
+          dioxide trends, reinforcing the argument that the two variables are not closely correlated, even though the
+          underlying long-term trends are similar.</li>
+      </ul>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Final Reflection</h2>
+
+      <p>The dataset we chose contained a large amount of information that could be interpreted and visualized in many
+        different ways. Finding a topic that was both interesting and had enough depth to create persuasive or
+        potentially deceptive visualizations took some time, but exploring the dataset more deeply revealed several
+        viable options. Once we identified a clear focus, the process of aggregating and transforming the data was
+        relatively straightforward. Because much of the data was continuous and numeric, it required fewer subjective
+        choices during preprocessing, which helped maintain consistency across transformations.
+      </p>
+      <p>
+        Ethical analysis is more than just showing the truth; the intent behind what we want to say is just as
+        important. Even with accurate data, it is easy to manipulate it in a way that leads viewers toward a completely
+        different conclusion. The different changes we made to our plots showed that even small visual adjustments can
+        subtly guide or mislead the viewer. The line between persuasion and deception depends on how honest we are about
+        our intentions. The narrative we build should be as truthful as the data itself, and the transformations we
+        apply should remain transparent and justified. Once we begin to insert our own narrative or beliefs, the data
+        reflects that bias, turning a visualization meant to inform into one that misleads.
+      </p>
+    </section>
+  </main>
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
+    integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
+    data-cf-beacon='{"version":"2024.11.0","token":"c822b88e119346678db149ed7b7721c9","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}'
+    crossorigin="anonymous"></script>
 </body>
+
 </html>
